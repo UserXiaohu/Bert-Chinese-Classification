@@ -1,0 +1,29 @@
+模型转换数据参数：-bert_model_dir ./chinese_L-12_H-768_A-12 -model_pb_dir ./data -model_dir ./dream_output -max_seq_len 128 -num_label 41
+模型训练数据参数：--task_name=dream
+\
+--do_train=true
+\
+--do_eval=true
+\
+--data_dir=dealText/data
+\
+--vocab_file=chinese_roberta_wwm_ext_L-12_H-768_A-12/vocab.txt
+\
+--bert_config_file=chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_config.json
+\
+--init_checkpoint=chinese_roberta_wwm_ext_L-12_H-768_A-12/bert_model.ckpt
+\
+--max_seq_length=256
+\
+--train_batch_size=128
+\
+--learning_rate=2e-5
+\
+--num_train_epochs=3.0
+\
+--output_dir=./dream_deal_wwm_output/
+\
+
+
+部署代码：
+bert-base-serving-start -model_dir C:\Users\admin\Desktop\BERT_Chinese_Classification\dream_output -bert_model_dir C:\Users\admin\Desktop\BERT_Chinese_Classification\chinese_L-12_H-768_A-12 -model_pb_dir C:\Users\admin\Desktop\BERT_Chinese_Classification\dream_output -mode CLASS -max_seq_len 128 -http_port 8091 -port 5575 -port_out 5576
